@@ -76,7 +76,6 @@ public class DirectorySize {
 
                 }
             }
-
         }
         return size;
     }
