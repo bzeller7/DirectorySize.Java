@@ -61,24 +61,24 @@ public class DirectorySize {
 
     public static long getSizeQueue(File file) {
 
-        //   Queue <File> queue = new Queue <> ();
+        Queue < File > queue = new LinkedList < > ();
         long size = 0;
-        //         
-        //         while (!queue.isEmpty()){
-        //             File temp = queue.remove();
-        //             if(temp.isFile()){
-        //                size += temp.length();
-        //             }
-        //             else{
-        //                File[] files = temp.listFiles();
-        //                 for (int i = 0; files != null && i < files.length; i++) {
-        //                   queue.add(files[i]);
-        // 
-        //             }
-        //         }
-        //               
+        queue.offer(file);
 
+        while (!queue.isEmpty()) {
+            File temp = queue.poll();
+            if (temp.isFile()) {
+                size += temp.length();
+            } else {
+                File[] files = temp.listFiles();
+                for (int i = 0; files != null && i < files.length; i++) {
+                    queue.add(files[i]);
+
+                }
+            }
+
+        }
         return size;
-        //}
+
     }
 }
